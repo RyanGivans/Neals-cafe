@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neal's Cafe Menu | Springdale, Arkansas</title>
-  <meta name="description" content="Browse Neal's Cafe menu by category with breakfast, dinners, sandwiches, soups, desserts, kids meals, and daily favorites." />
+  <meta name="description" content="Browse Neal's Cafe menu with breakfast, daily specials, burgers, dinners, pie, desserts, and kids meals." />
   <meta name="theme-color" content="#100a0a" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,12 +13,13 @@
     :root {
       --bg: #100a0a;
       --bg2: #181111;
+      --bg3: #231715;
       --panel: rgba(26, 19, 19, .72);
       --line: rgba(255,255,255,.08);
       --text: #f8f1e7;
       --muted: #d5c6b6;
       --gold: #f0c889;
-      --rose: #ff93ad;
+      --red: #b95b4a;
       --shadow: 0 18px 60px rgba(0,0,0,.34);
       --radius-xl: 30px;
       --radius-lg: 24px;
@@ -28,13 +29,12 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       font-family: "Inter", system-ui, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 12% 0%, rgba(255,117,145,.1), transparent 22%),
+        radial-gradient(circle at 12% 0%, rgba(255,117,145,.08), transparent 22%),
         radial-gradient(circle at 88% 10%, rgba(240,200,137,.1), transparent 24%),
         linear-gradient(180deg, #140d0d 0%, #0d0808 100%);
       overflow-x: hidden;
@@ -47,6 +47,31 @@
       width: min(calc(100% - 32px), var(--container));
       margin: 0 auto;
     }
+
+    .warm-section {
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(247,239,228,.03), rgba(247,239,228,.015)),
+        radial-gradient(circle at 18% 8%, rgba(240,200,137,.08), transparent 26%),
+        radial-gradient(circle at 85% 0%, rgba(185,91,74,.06), transparent 24%);
+    }
+
+    .diner-texture::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .05;
+      background:
+        linear-gradient(45deg, transparent 48%, rgba(255,255,255,.7) 48%, rgba(255,255,255,.7) 52%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(255,255,255,.7) 48%, rgba(255,255,255,.7) 52%, transparent 52%);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,.6) 12%, rgba(0,0,0,.6) 88%, transparent);
+      z-index: 0;
+    }
+
+    .warm-section > .container,
+    .section-inner { position: relative; z-index: 1; }
 
     .topbar {
       position: sticky;
@@ -67,7 +92,7 @@
       padding: 10px 16px;
       border-radius: 999px;
       background:
-        linear-gradient(180deg, rgba(27, 18, 18, 0.74), rgba(17, 11, 11, 0.64));
+        linear-gradient(180deg, rgba(27,18,18,.74), rgba(17,11,11,.64));
       border: 1px solid rgba(255,255,255,.08);
       box-shadow: 0 16px 40px rgba(0,0,0,.22);
     }
@@ -79,44 +104,41 @@
       min-width: 0;
     }
 
-    .brand-logo-wrap {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 62px;
-      padding: 8px 14px;
-      border-radius: 18px;
-      background:
-        linear-gradient(180deg, rgba(255, 248, 239, 0.08), rgba(255, 248, 239, 0.04));
-      border: 1px solid rgba(255,255,255,.07);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.06),
-        0 10px 30px rgba(0,0,0,.22);
-      backdrop-filter: blur(10px);
-    }
-
-    .brand-logo {
-      display: block;
-      height: 44px;
-      width: auto;
-      max-width: 240px;
+    .brand-icon-logo {
+      width: 56px;
+      height: 56px;
       object-fit: contain;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
+      border-radius: 14px;
+      padding: 6px;
+      background:
+        linear-gradient(180deg, rgba(255,248,239,.08), rgba(255,248,239,.04));
+      border: 1px solid rgba(255,255,255,.07);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 10px 30px rgba(0,0,0,.22);
     }
 
-    .brand-mini {
-      display: none;
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      place-items: center;
-      background: linear-gradient(135deg, #f1b5b5 0%, #f4c47c 100%);
-      color: #24130f;
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .brand-text strong {
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      box-shadow: 0 10px 28px rgba(240,174,147,.2);
-      flex: 0 0 auto;
+      font-size: 1.9rem;
+      line-height: .9;
+      letter-spacing: -.03em;
+      color: #fff2e3;
+      white-space: nowrap;
+    }
+
+    .brand-text span {
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(240,200,137,.92);
+      white-space: nowrap;
     }
 
     .top-actions {
@@ -158,7 +180,7 @@
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 94px 0 38px;
+      padding: 96px 0 40px;
     }
 
     .hero::before {
@@ -166,9 +188,9 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(10,7,7,.84) 0%, rgba(10,7,7,.5) 48%, rgba(10,7,7,.26) 100%),
-        linear-gradient(180deg, rgba(10,7,7,.08), rgba(10,7,7,.48)),
-        url("../neals-hero.jpg") center right / cover no-repeat;
+        linear-gradient(90deg, rgba(10,7,7,.82) 0%, rgba(10,7,7,.48) 48%, rgba(10,7,7,.24) 100%),
+        linear-gradient(180deg, rgba(10,7,7,.06), rgba(10,7,7,.48)),
+        url("../neals-hero.jpg") 72% 58% / cover no-repeat;
       transform: scale(1.02);
       z-index: -3;
     }
@@ -194,10 +216,10 @@
     }
 
     .hero-glow-1 {
-      top: 5%;
+      top: 9%;
       right: 2%;
       width: 18%;
-      height: 72%;
+      height: 68%;
       background:
         linear-gradient(180deg,
           rgba(255,72,36,0) 0%,
@@ -213,7 +235,7 @@
 
     .hero-glow-2 {
       right: 5%;
-      bottom: 18%;
+      bottom: 16%;
       width: 24%;
       height: 18%;
       background: radial-gradient(circle at 40% 50%, rgba(255,180,74,.26), transparent 58%);
@@ -224,7 +246,7 @@
 
     .hero-glow-3 {
       right: 15.5%;
-      top: 33%;
+      top: 38%;
       width: 10%;
       height: 16%;
       background: radial-gradient(circle, rgba(255,92,78,.22), transparent 60%);
@@ -254,7 +276,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.08fr .92fr;
+      grid-template-columns: 1.05fr .95fr;
       gap: 24px;
       align-items: end;
       min-height: 420px;
@@ -282,17 +304,18 @@
       width: 8px;
       height: 8px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--rose), var(--gold));
+      background: linear-gradient(135deg, #ff93ad, var(--gold));
       box-shadow: 0 0 16px rgba(255,177,145,.6);
     }
 
     .hero h1 {
       margin: 18px 0 18px;
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(4rem, 8vw, 7rem);
-      line-height: .88;
-      letter-spacing: -.05em;
-      max-width: 8.8ch;
+      font-size: clamp(3.8rem, 7vw, 6.4rem);
+      line-height: .92;
+      letter-spacing: -.045em;
+      max-width: 9ch;
+      text-wrap: balance;
     }
 
     .hero h1 span {
@@ -360,13 +383,83 @@
       font-weight: 700;
     }
 
+    .specials-strip {
+      padding: 0 0 34px;
+      margin-top: -16px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .specials-strip-card {
+      padding: 22px 24px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 22px;
+      align-items: center;
+      backdrop-filter: blur(16px);
+    }
+
+    .specials-strip-title {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 180px;
+    }
+
+    .specials-strip-title strong {
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .specials-strip-title h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.4rem;
+      line-height: .92;
+      letter-spacing: -.03em;
+    }
+
+    .specials-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .special-pill {
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+    }
+
+    .special-pill strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff1df;
+      font-size: .92rem;
+    }
+
+    .special-pill span {
+      display: block;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
     .controls {
       padding: 26px 0 20px;
       position: sticky;
       top: 92px;
       z-index: 70;
       backdrop-filter: blur(18px);
-      background: linear-gradient(180deg, rgba(13,8,8,.8), rgba(13,8,8,.55));
+      background: linear-gradient(180deg, rgba(13,8,8,.82), rgba(13,8,8,.58));
       border-top: 1px solid rgba(255,255,255,.04);
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
@@ -405,7 +498,6 @@
     }
 
     .search-wrap input::placeholder { color: rgba(248,241,231,.48); }
-
     .search-wrap svg,
     .filter-wrap svg,
     .jump-wrap svg {
@@ -415,12 +507,14 @@
       flex: 0 0 auto;
     }
 
-    main.section { padding-top: 56px; }
+    .section-inner {
+      padding: 58px 0 0;
+    }
 
     .section-title {
       margin: 0 0 12px;
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(2.7rem, 4.5vw, 4.8rem);
+      font-size: clamp(2.8rem, 4.5vw, 4.8rem);
       line-height: .92;
       letter-spacing: -.04em;
     }
@@ -433,10 +527,75 @@
       line-height: 1.72;
     }
 
-    .specials-grid {
+    .triple-grid,
+    .specials-grid,
+    .menu-grid,
+    .pie-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
+    }
+
+    .triple-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 28px;
+    }
+
+    .entry-card {
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .entry-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -50px auto;
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(240,200,137,.12), transparent 68%);
+      pointer-events: none;
+    }
+
+    .entry-card strong {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .72rem;
+      font-weight: 800;
+    }
+
+    .entry-card h3 {
+      margin: 14px 0 10px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.4rem;
+      line-height: .92;
+      letter-spacing: -.03em;
+    }
+
+    .entry-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .entry-card a {
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .specials-grid {
+      grid-template-columns: repeat(3, 1fr);
       margin-top: 28px;
     }
 
@@ -475,7 +634,7 @@
       z-index: 2;
       padding: 18px;
       border-radius: 20px;
-      background: rgba(16,10,10,.7);
+      background: rgba(16,10,10,.72);
       border: 1px solid rgba(255,255,255,.08);
       backdrop-filter: blur(14px);
     }
@@ -508,41 +667,9 @@
       line-height: 1.66;
     }
 
-    .categories {
-      padding-top: 60px;
-    }
-
-    .category-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 26px 0 28px;
-    }
-
-    .category-chip {
-      min-height: 44px;
-      padding: 0 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform var(--ease), background var(--ease), border-color var(--ease);
-    }
-
-    .category-chip:hover,
-    .category-chip.is-active {
-      transform: translateY(-1px);
-      background: rgba(240,200,137,.08);
-      border-color: rgba(240,200,137,.2);
-      color: var(--gold);
-    }
-
     .menu-grid {
-      display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      margin-top: 30px;
     }
 
     .menu-section-card {
@@ -630,6 +757,97 @@
       font-size: .96rem;
     }
 
+    .pie-grid {
+      grid-template-columns: .96fr 1.04fr;
+      margin-top: 30px;
+      align-items: stretch;
+    }
+
+    .pie-visual {
+      position: relative;
+      min-height: 540px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.64)),
+        url("https://images.unsplash.com/photo-1562007908-17c67e878c88?auto=format&fit=crop&w=1400&q=80") center / cover no-repeat;
+    }
+
+    .pie-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.68));
+    }
+
+    .pie-copy {
+      position: absolute;
+      inset: auto 22px 22px 22px;
+      z-index: 2;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(16,10,10,.72);
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .pie-copy strong {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .76rem;
+      font-weight: 800;
+    }
+
+    .pie-copy h3 {
+      margin: 14px 0 10px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 3rem;
+      line-height: .94;
+      letter-spacing: -.04em;
+    }
+
+    .pie-copy p {
+      margin: 0;
+      color: rgba(248,241,231,.84);
+      line-height: 1.72;
+    }
+
+    .pie-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .pie-card {
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+    }
+
+    .pie-card h3 {
+      margin: 0 0 10px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.3rem;
+      line-height: .95;
+      letter-spacing: -.03em;
+    }
+
+    .pie-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
     .empty-state {
       display: none;
       margin-top: 22px;
@@ -644,7 +862,9 @@
       padding: 42px 0 54px;
       margin-top: 46px;
       border-top: 1px solid rgba(255,255,255,.06);
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      background:
+        linear-gradient(180deg, rgba(247,239,228,.03), rgba(247,239,228,.01)),
+        radial-gradient(circle at 15% 0%, rgba(240,200,137,.08), transparent 24%);
     }
 
     .footer-shell {
@@ -677,24 +897,29 @@
 
     @media (max-width: 1150px) {
       .hero-grid,
+      .specials-strip-card,
       .controls-grid,
+      .triple-grid,
       .specials-grid,
-      .menu-grid {
+      .menu-grid,
+      .pie-grid {
         grid-template-columns: 1fr;
       }
 
-      .controls {
-        position: static;
+      .specials-row {
+        grid-template-columns: repeat(2, 1fr);
       }
+
+      .controls { position: static; }
     }
 
     @media (max-width: 760px) {
       .hero {
-        padding-top: 72px;
+        padding-top: 74px;
       }
 
       .hero h1 {
-        font-size: clamp(3.1rem, 16vw, 5.3rem);
+        font-size: clamp(3.2rem, 16vw, 5.3rem);
       }
 
       .topbar-shell {
@@ -711,12 +936,13 @@
         flex: 1 1 calc(50% - 8px);
       }
 
-      .hero-glow-1 { right: 0%; width: 22%; height: 70%; }
-      .hero-glow-2 { right: 2%; width: 30%; height: 18%; }
-      .hero-glow-3 { right: 12%; width: 14%; height: 18%; }
+      .specials-row {
+        grid-template-columns: 1fr;
+      }
 
-      .brand-logo-wrap { display: none; }
-      .brand-mini { display: grid; }
+      .brand-text span { display: none; }
+      .brand-text strong { font-size: 1.45rem; }
+      .brand-icon-logo { width: 48px; height: 48px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -730,10 +956,11 @@
     <div class="container">
       <div class="topbar-shell">
         <a class="brand" href="../index.html" aria-label="Back to Neal's Cafe home">
-          <span class="brand-logo-wrap">
-            <img class="brand-logo" src="../assets/neals-logo-horizontal.png" alt="Neal's Cafe" />
-          </span>
-          <div class="brand-mini">N</div>
+          <img class="brand-icon-logo" src="../assets/neals-logo-icon.png" alt="Neal's Cafe icon" />
+          <div class="brand-text">
+            <strong>Neal's Cafe</strong>
+            <span>Springdale, Arkansas</span>
+          </div>
         </a>
 
         <div class="top-actions">
@@ -793,6 +1020,35 @@
     </div>
   </section>
 
+  <section class="specials-strip">
+    <div class="container">
+      <div class="specials-strip-card">
+        <div class="specials-strip-title">
+          <strong>Today's Specials</strong>
+          <h2>Daily plates.</h2>
+        </div>
+        <div class="specials-row">
+          <article class="special-pill">
+            <strong>Tuesday</strong>
+            <span>Roast beef, mashed potatoes, carrots, and roll.</span>
+          </article>
+          <article class="special-pill">
+            <strong>Wednesday</strong>
+            <span>Chicken & dressing with mashed potatoes and vegetable.</span>
+          </article>
+          <article class="special-pill">
+            <strong>Thursday</strong>
+            <span>Meatloaf with mashed potatoes, green beans, and roll.</span>
+          </article>
+          <article class="special-pill">
+            <strong>Friday</strong>
+            <span>Catfish plate with hushpuppies, fries, and slaw.</span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="controls">
     <div class="container">
       <div class="controls-grid">
@@ -810,11 +1066,11 @@
           </svg>
           <select id="categoryFilter">
             <option value="all">All Categories</option>
+            <option value="daily-specials">Daily Specials</option>
             <option value="breakfast">Breakfast</option>
             <option value="dinners">Dinners</option>
             <option value="sandwiches">Sandwiches & Burgers</option>
             <option value="soups-salads">Soups & Salads</option>
-            <option value="daily-specials">Daily Specials</option>
             <option value="sides">Sides & Veggies</option>
             <option value="desserts">Desserts</option>
             <option value="kids">Kids Meals</option>
@@ -841,8 +1097,40 @@
     </div>
   </section>
 
-  <main id="menu-grid" class="section">
-    <div class="container">
+  <section class="warm-section diner-texture">
+    <div class="container section-inner">
+      <h2 class="section-title">Start with the part of the day.</h2>
+      <p class="section-copy">
+        A diner menu should not feel like one long dump. These entry points make it easier for customers to browse the board like real diners do.
+      </p>
+
+      <div class="triple-grid">
+        <article class="entry-card">
+          <strong>Breakfast</strong>
+          <h3>Eggs, omelets, hotcakes.</h3>
+          <p>Morning plates, biscuits, gravy, burritos, cinnamon rolls, and coffee for the regular start of the day.</p>
+          <a href="#breakfast">Jump to breakfast</a>
+        </article>
+
+        <article class="entry-card">
+          <strong>Lunch</strong>
+          <h3>Burgers, sandwiches, specials.</h3>
+          <p>Fast enough for weekday lunch, comforting enough to bring you back for the same order next week.</p>
+          <a href="#sandwiches">Jump to lunch favorites</a>
+        </article>
+
+        <article class="entry-card">
+          <strong>Dinner</strong>
+          <h3>Country plates and pie.</h3>
+          <p>Catfish, fried chicken, meatloaf, vegetables, and the sort of meal that earns the dessert afterward.</p>
+          <a href="#dinners">Jump to dinners</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="warm-section">
+    <div class="container section-inner">
       <h2 class="section-title">Favorites first.</h2>
       <p class="section-copy">
         Daily specials, breakfast plates, burgers, dinners, sides, and pie — laid out the way a real menu should feel on screen.
@@ -868,7 +1156,7 @@
         </article>
 
         <article class="special-card">
-          <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=80" alt="Pie and dessert under warm light" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1562007908-17c67e878c88?auto=format&fit=crop&w=1200&q=80" alt="Pie and dessert under warm light" loading="lazy" />
           <div class="special-copy">
             <strong>Dessert</strong>
             <h3>Pie and sweet finishes.</h3>
@@ -877,417 +1165,303 @@
         </article>
       </div>
     </div>
+  </section>
 
-    <section class="categories">
-      <div class="container">
-        <div class="category-nav" id="categoryChips">
-          <button class="category-chip is-active" type="button" data-category="all">All</button>
-          <button class="category-chip" type="button" data-category="daily-specials">Daily Specials</button>
-          <button class="category-chip" type="button" data-category="breakfast">Breakfast</button>
-          <button class="category-chip" type="button" data-category="dinners">Dinners</button>
-          <button class="category-chip" type="button" data-category="sandwiches">Sandwiches & Burgers</button>
-          <button class="category-chip" type="button" data-category="soups-salads">Soups & Salads</button>
-          <button class="category-chip" type="button" data-category="sides">Sides & Veggies</button>
-          <button class="category-chip" type="button" data-category="desserts">Desserts</button>
-          <button class="category-chip" type="button" data-category="kids">Kids Meals</button>
-        </div>
+  <section class="warm-section">
+    <div class="container section-inner">
+      <div class="menu-grid" id="menuGrid">
+        <section class="menu-section-card" id="daily-specials" data-category="daily-specials">
+          <div class="menu-section-head">
+            <strong>Weekday Favorites</strong>
+            <h3>Daily Specials</h3>
+            <p>Classic country lunches and plate specials that stay at the center of the room.</p>
+          </div>
+          <div class="menu-items">
+            <article class="menu-item" data-name="monday special closed">
+              <div><h4>Monday</h4><p>Closed.</p></div>
+              <span class="price">Closed</span>
+            </article>
+            <article class="menu-item" data-name="tuesday special roast beef mashed potatoes carrots roll">
+              <div><h4>Tuesday — Roast Beef</h4><p>Mashed potatoes, carrots, and roll.</p></div>
+              <span class="price">Daily</span>
+            </article>
+            <article class="menu-item" data-name="wednesday special chicken and dressing mashed potatoes vegetable roll">
+              <div><h4>Wednesday — Chicken & Dressing</h4><p>Mashed potatoes, vegetable, and roll.</p></div>
+              <span class="price">Daily</span>
+            </article>
+            <article class="menu-item" data-name="thursday special meatloaf mashed potatoes green beans roll">
+              <div><h4>Thursday — Meatloaf</h4><p>Mashed potatoes, green beans, and roll.</p></div>
+              <span class="price">Daily</span>
+            </article>
+            <article class="menu-item" data-name="friday special catfish hushpuppies fries slaw">
+              <div><h4>Friday — Catfish Plate</h4><p>Catfish with hushpuppies, fries, and slaw.</p></div>
+              <span class="price">Daily</span>
+            </article>
+          </div>
+        </section>
 
-        <div class="menu-grid" id="menuGrid">
-          <section class="menu-section-card" id="daily-specials" data-category="daily-specials">
-            <div class="menu-section-head">
-              <strong>Weekday Favorites</strong>
-              <h3>Daily Specials</h3>
-              <p>Classic country lunches and plate specials that stay at the center of the room.</p>
-            </div>
-            <div class="menu-items">
-              <article class="menu-item" data-name="monday special closed">
-                <div>
-                  <h4>Monday</h4>
-                  <p>Closed.</p>
-                </div>
-                <span class="price">Closed</span>
-              </article>
-              <article class="menu-item" data-name="tuesday special roast beef mashed potatoes carrots roll">
-                <div>
-                  <h4>Tuesday — Roast Beef</h4>
-                  <p>Mashed potatoes, carrots, and roll.</p>
-                </div>
-                <span class="price">Daily</span>
-              </article>
-              <article class="menu-item" data-name="wednesday special chicken and dressing mashed potatoes vegetable roll">
-                <div>
-                  <h4>Wednesday — Chicken & Dressing</h4>
-                  <p>Mashed potatoes, vegetable, and roll.</p>
-                </div>
-                <span class="price">Daily</span>
-              </article>
-              <article class="menu-item" data-name="thursday special meatloaf mashed potatoes green beans roll">
-                <div>
-                  <h4>Thursday — Meatloaf</h4>
-                  <p>Mashed potatoes, green beans, and roll.</p>
-                </div>
-                <span class="price">Daily</span>
-              </article>
-              <article class="menu-item" data-name="friday special catfish hushpuppies fries slaw">
-                <div>
-                  <h4>Friday — Catfish Plate</h4>
-                  <p>Catfish with hushpuppies, fries, and slaw.</p>
-                </div>
-                <span class="price">Daily</span>
-              </article>
-            </div>
-          </section>
+        <section class="menu-section-card" id="breakfast" data-category="breakfast">
+          <div class="menu-section-head">
+            <strong>Morning</strong>
+            <h3>Breakfast</h3>
+            <p>Hot coffee, big plates, and the kind of breakfast menu built for regulars.</p>
+          </div>
+          <div class="menu-items">
+            <article class="menu-item" data-name="breakfast burrito">
+              <div><h4>Breakfast Burrito</h4><p>Warm breakfast wrap filled for a fast morning start.</p></div>
+              <span class="price">$5.89</span>
+            </article>
+            <article class="menu-item" data-name="meat lovers omelet">
+              <div><h4>Meat Lovers Omelet</h4><p>Hearty omelet loaded with breakfast favorites.</p></div>
+              <span class="price">$8.99</span>
+            </article>
+            <article class="menu-item" data-name="western omelet">
+              <div><h4>Western Omelet</h4><p>Classic diner omelet with peppers, onions, and ham.</p></div>
+              <span class="price">$8.29</span>
+            </article>
+            <article class="menu-item" data-name="cheese omelet">
+              <div><h4>Cheese Omelet</h4><p>Simple, hot, and familiar.</p></div>
+              <span class="price">$6.79</span>
+            </article>
+            <article class="menu-item" data-name="hotcakes">
+              <div><h4>Hotcakes</h4><p>Short stack diner favorite.</p></div>
+              <span class="price">$2.29</span>
+            </article>
+            <article class="menu-item" data-name="cinnamon roll">
+              <div><h4>Cinnamon Roll</h4><p>Sweet breakfast-house classic.</p></div>
+              <span class="price">$2.69</span>
+            </article>
+            <article class="menu-item" data-name="biscuit and gravy">
+              <div><h4>Biscuit & Gravy</h4><p>Traditional Southern breakfast staple.</p></div>
+              <span class="price">Market</span>
+            </article>
+            <article class="menu-item" data-name="eggs bacon sausage hashbrowns">
+              <div><h4>Egg Plates</h4><p>Eggs with bacon or sausage and breakfast sides.</p></div>
+              <span class="price">Varies</span>
+            </article>
+          </div>
+        </section>
 
-          <section class="menu-section-card" id="breakfast" data-category="breakfast">
-            <div class="menu-section-head">
-              <strong>Morning</strong>
-              <h3>Breakfast</h3>
-              <p>Hot coffee, big plates, and the kind of breakfast menu built for regulars.</p>
-            </div>
-            <div class="menu-items">
-              <article class="menu-item" data-name="breakfast burrito">
-                <div>
-                  <h4>Breakfast Burrito</h4>
-                  <p>Warm breakfast wrap filled for a fast morning start.</p>
-                </div>
-                <span class="price">$5.89</span>
-              </article>
-              <article class="menu-item" data-name="meat lovers omelet">
-                <div>
-                  <h4>Meat Lovers Omelet</h4>
-                  <p>Hearty omelet loaded with breakfast favorites.</p>
-                </div>
-                <span class="price">$8.99</span>
-              </article>
-              <article class="menu-item" data-name="western omelet">
-                <div>
-                  <h4>Western Omelet</h4>
-                  <p>Classic diner omelet with peppers, onions, and ham.</p>
-                </div>
-                <span class="price">$8.29</span>
-              </article>
-              <article class="menu-item" data-name="cheese omelet">
-                <div>
-                  <h4>Cheese Omelet</h4>
-                  <p>Simple, hot, and familiar.</p>
-                </div>
-                <span class="price">$6.79</span>
-              </article>
-              <article class="menu-item" data-name="hotcakes">
-                <div>
-                  <h4>Hotcakes</h4>
-                  <p>Short stack diner favorite.</p>
-                </div>
-                <span class="price">$2.29</span>
-              </article>
-              <article class="menu-item" data-name="cinnamon roll">
-                <div>
-                  <h4>Cinnamon Roll</h4>
-                  <p>Sweet breakfast-house classic.</p>
-                </div>
-                <span class="price">$2.69</span>
-              </article>
-              <article class="menu-item" data-name="biscuit and gravy">
-                <div>
-                  <h4>Biscuit & Gravy</h4>
-                  <p>Traditional Southern breakfast staple.</p>
-                </div>
-                <span class="price">Market</span>
-              </article>
-              <article class="menu-item" data-name="eggs bacon sausage hashbrowns">
-                <div>
-                  <h4>Egg Plates</h4>
-                  <p>Eggs with bacon or sausage and breakfast sides.</p>
-                </div>
-                <span class="price">Varies</span>
-              </article>
-            </div>
-          </section>
+        <section class="menu-section-card" id="dinners" data-category="dinners">
+          <div class="menu-section-head">
+            <strong>Blue-Plate Comfort</strong>
+            <h3>Dinners</h3>
+            <p>Country-style plates, fried favorites, vegetables, and rolls.</p>
+          </div>
+          <div class="menu-items">
+            <article class="menu-item" data-name="fried chicken dinner">
+              <div><h4>Fried Chicken Dinner</h4><p>Crisp chicken with classic Neal’s comfort-food sides.</p></div>
+              <span class="price">House Favorite</span>
+            </article>
+            <article class="menu-item" data-name="catfish dinner">
+              <div><h4>Catfish Dinner</h4><p>Golden catfish with the usual Southern plate comforts.</p></div>
+              <span class="price">House Favorite</span>
+            </article>
+            <article class="menu-item" data-name="chicken fried steak dinner">
+              <div><h4>Chicken Fried Steak Dinner</h4><p>Country-style plate with gravy and sides.</p></div>
+              <span class="price">Daily</span>
+            </article>
+            <article class="menu-item" data-name="roast beef dinner">
+              <div><h4>Roast Beef Dinner</h4><p>Warm roast beef plate with vegetables and roll.</p></div>
+              <span class="price">Daily</span>
+            </article>
+            <article class="menu-item" data-name="pork chops dinner">
+              <div><h4>Pork Chops Dinner</h4><p>Country-style pork chop plate with sides.</p></div>
+              <span class="price">Daily</span>
+            </article>
+            <article class="menu-item" data-name="chicken with vegetables">
+              <div><h4>Chicken with Vegetables</h4><p>Lighter comfort-food plate built around vegetables.</p></div>
+              <span class="price">$5.79+</span>
+            </article>
+          </div>
+        </section>
 
-          <section class="menu-section-card" id="dinners" data-category="dinners">
-            <div class="menu-section-head">
-              <strong>Blue-Plate Comfort</strong>
-              <h3>Dinners</h3>
-              <p>Country-style plates, fried favorites, vegetables, and rolls.</p>
-            </div>
-            <div class="menu-items">
-              <article class="menu-item" data-name="fried chicken dinner">
-                <div>
-                  <h4>Fried Chicken Dinner</h4>
-                  <p>Crisp chicken with classic Neal’s comfort-food sides.</p>
-                </div>
-                <span class="price">House Favorite</span>
-              </article>
-              <article class="menu-item" data-name="catfish dinner">
-                <div>
-                  <h4>Catfish Dinner</h4>
-                  <p>Golden catfish with the usual Southern plate comforts.</p>
-                </div>
-                <span class="price">House Favorite</span>
-              </article>
-              <article class="menu-item" data-name="chicken fried steak dinner">
-                <div>
-                  <h4>Chicken Fried Steak Dinner</h4>
-                  <p>Country-style plate with gravy and sides.</p>
-                </div>
-                <span class="price">Daily</span>
-              </article>
-              <article class="menu-item" data-name="roast beef dinner">
-                <div>
-                  <h4>Roast Beef Dinner</h4>
-                  <p>Warm roast beef plate with vegetables and roll.</p>
-                </div>
-                <span class="price">Daily</span>
-              </article>
-              <article class="menu-item" data-name="pork chops dinner">
-                <div>
-                  <h4>Pork Chops Dinner</h4>
-                  <p>Country-style pork chop plate with sides.</p>
-                </div>
-                <span class="price">Daily</span>
-              </article>
-              <article class="menu-item" data-name="chicken with vegetables">
-                <div>
-                  <h4>Chicken with Vegetables</h4>
-                  <p>Lighter comfort-food plate built around vegetables.</p>
-                </div>
-                <span class="price">$5.79+</span>
-              </article>
-            </div>
-          </section>
+        <section class="menu-section-card" id="sandwiches" data-category="sandwiches">
+          <div class="menu-section-head">
+            <strong>Lunch Rush</strong>
+            <h3>Sandwiches & Burgers</h3>
+            <p>Fast enough for lunch, substantial enough to bring people back for the same order.</p>
+          </div>
+          <div class="menu-items">
+            <article class="menu-item" data-name="double bacon cheeseburger">
+              <div><h4>Double Bacon Cheeseburger</h4><p>Big burger, diner style.</p></div>
+              <span class="price">$7.99</span>
+            </article>
+            <article class="menu-item" data-name="barbecued beef sandwich">
+              <div><h4>Barbecued Beef Sandwich</h4><p>Classic hot sandwich option.</p></div>
+              <span class="price">$6.79</span>
+            </article>
+            <article class="menu-item" data-name="hamburger">
+              <div><h4>Hamburger</h4><p>Simple, familiar, and built for repeat orders.</p></div>
+              <span class="price">Varies</span>
+            </article>
+            <article class="menu-item" data-name="cheeseburger">
+              <div><h4>Cheeseburger</h4><p>Diner classic with melted cheese and fries if you want them.</p></div>
+              <span class="price">Varies</span>
+            </article>
+            <article class="menu-item" data-name="grilled cheese">
+              <div><h4>Grilled Cheese</h4><p>Short, familiar, and always useful on a cafe menu.</p></div>
+              <span class="price">Varies</span>
+            </article>
+            <article class="menu-item" data-name="club sandwich">
+              <div><h4>Club Sandwich</h4><p>Stacked lunch option for bigger appetites.</p></div>
+              <span class="price">Varies</span>
+            </article>
+            <article class="menu-item" data-name="blt sandwich">
+              <div><h4>BLT</h4><p>Bacon, lettuce, and tomato on a diner lunch board.</p></div>
+              <span class="price">Varies</span>
+            </article>
+          </div>
+        </section>
 
-          <section class="menu-section-card" id="sandwiches" data-category="sandwiches">
-            <div class="menu-section-head">
-              <strong>Lunch Rush</strong>
-              <h3>Sandwiches & Burgers</h3>
-              <p>Fast enough for lunch, substantial enough to bring people back for the same order.</p>
-            </div>
-            <div class="menu-items">
-              <article class="menu-item" data-name="double bacon cheeseburger">
-                <div>
-                  <h4>Double Bacon Cheeseburger</h4>
-                  <p>Big burger, diner style.</p>
-                </div>
-                <span class="price">$7.99</span>
-              </article>
-              <article class="menu-item" data-name="barbecued beef sandwich">
-                <div>
-                  <h4>Barbecued Beef Sandwich</h4>
-                  <p>Classic hot sandwich option.</p>
-                </div>
-                <span class="price">$6.79</span>
-              </article>
-              <article class="menu-item" data-name="hamburger">
-                <div>
-                  <h4>Hamburger</h4>
-                  <p>Simple, familiar, and built for repeat orders.</p>
-                </div>
-                <span class="price">Varies</span>
-              </article>
-              <article class="menu-item" data-name="cheeseburger">
-                <div>
-                  <h4>Cheeseburger</h4>
-                  <p>Diner classic with melted cheese and fries if you want them.</p>
-                </div>
-                <span class="price">Varies</span>
-              </article>
-              <article class="menu-item" data-name="grilled cheese">
-                <div>
-                  <h4>Grilled Cheese</h4>
-                  <p>Short, familiar, and always useful on a cafe menu.</p>
-                </div>
-                <span class="price">Varies</span>
-              </article>
-              <article class="menu-item" data-name="club sandwich">
-                <div>
-                  <h4>Club Sandwich</h4>
-                  <p>Stacked lunch option for bigger appetites.</p>
-                </div>
-                <span class="price">Varies</span>
-              </article>
-              <article class="menu-item" data-name="blt sandwich">
-                <div>
-                  <h4>BLT</h4>
-                  <p>Bacon, lettuce, and tomato on a diner lunch board.</p>
-                </div>
-                <span class="price">Varies</span>
-              </article>
-            </div>
-          </section>
+        <section class="menu-section-card" id="soups-salads" data-category="soups-salads">
+          <div class="menu-section-head">
+            <strong>Lighter Plates</strong>
+            <h3>Soups & Salads</h3>
+            <p>Fresh options and lunch-friendly bowls that round out the board.</p>
+          </div>
+          <div class="menu-items">
+            <article class="menu-item" data-name="soup of the day">
+              <div><h4>Soup of the Day</h4><p>Daily rotating soup selection.</p></div>
+              <span class="price">Daily</span>
+            </article>
+            <article class="menu-item" data-name="chef salad">
+              <div><h4>Chef Salad</h4><p>Loaded salad option for a full meal.</p></div>
+              <span class="price">Varies</span>
+            </article>
+            <article class="menu-item" data-name="side salad">
+              <div><h4>Side Salad</h4><p>A simple add-on or lighter meal option.</p></div>
+              <span class="price">Varies</span>
+            </article>
+            <article class="menu-item" data-name="bowl of chili">
+              <div><h4>Bowl of Chili</h4><p>Hearty cafe-style bowl for cooler days and lunch stops.</p></div>
+              <span class="price">Varies</span>
+            </article>
+          </div>
+        </section>
 
-          <section class="menu-section-card" id="soups-salads" data-category="soups-salads">
-            <div class="menu-section-head">
-              <strong>Lighter Plates</strong>
-              <h3>Soups & Salads</h3>
-              <p>Fresh options and lunch-friendly bowls that round out the board.</p>
-            </div>
-            <div class="menu-items">
-              <article class="menu-item" data-name="soup of the day">
-                <div>
-                  <h4>Soup of the Day</h4>
-                  <p>Daily rotating soup selection.</p>
-                </div>
-                <span class="price">Daily</span>
-              </article>
-              <article class="menu-item" data-name="chef salad">
-                <div>
-                  <h4>Chef Salad</h4>
-                  <p>Loaded salad option for a full meal.</p>
-                </div>
-                <span class="price">Varies</span>
-              </article>
-              <article class="menu-item" data-name="side salad">
-                <div>
-                  <h4>Side Salad</h4>
-                  <p>A simple add-on or lighter meal option.</p>
-                </div>
-                <span class="price">Varies</span>
-              </article>
-              <article class="menu-item" data-name="bowl of chili">
-                <div>
-                  <h4>Bowl of Chili</h4>
-                  <p>Hearty cafe-style bowl for cooler days and lunch stops.</p>
-                </div>
-                <span class="price">Varies</span>
-              </article>
-            </div>
-          </section>
+        <section class="menu-section-card" id="sides" data-category="sides">
+          <div class="menu-section-head">
+            <strong>Vegetables & Add-Ons</strong>
+            <h3>Sides & Veggies</h3>
+            <p>The supporting cast that makes country plates feel complete.</p>
+          </div>
+          <div class="menu-items">
+            <article class="menu-item" data-name="mashed potatoes and gravy">
+              <div><h4>Mashed Potatoes & Gravy</h4><p>Country plate staple.</p></div>
+              <span class="price">Side</span>
+            </article>
+            <article class="menu-item" data-name="green beans">
+              <div><h4>Green Beans</h4><p>Classic vegetable side.</p></div>
+              <span class="price">Side</span>
+            </article>
+            <article class="menu-item" data-name="carrots">
+              <div><h4>Carrots</h4><p>Warm, traditional dinner side.</p></div>
+              <span class="price">Side</span>
+            </article>
+            <article class="menu-item" data-name="corn">
+              <div><h4>Corn</h4><p>Simple and familiar vegetable side.</p></div>
+              <span class="price">Side</span>
+            </article>
+            <article class="menu-item" data-name="fried okra">
+              <div><h4>Fried Okra</h4><p>Southern side with real menu-board appeal.</p></div>
+              <span class="price">Side</span>
+            </article>
+            <article class="menu-item" data-name="fries">
+              <div><h4>Fries</h4><p>For burgers, sandwiches, and quick comfort.</p></div>
+              <span class="price">Side</span>
+            </article>
+            <article class="menu-item" data-name="rolls">
+              <div><h4>Warm Rolls</h4><p>Classic Neal’s table companion.</p></div>
+              <span class="price">Table Favorite</span>
+            </article>
+          </div>
+        </section>
 
-          <section class="menu-section-card" id="sides" data-category="sides">
-            <div class="menu-section-head">
-              <strong>Vegetables & Add-Ons</strong>
-              <h3>Sides & Veggies</h3>
-              <p>The supporting cast that makes country plates feel complete.</p>
-            </div>
-            <div class="menu-items">
-              <article class="menu-item" data-name="mashed potatoes and gravy">
-                <div>
-                  <h4>Mashed Potatoes & Gravy</h4>
-                  <p>Country plate staple.</p>
-                </div>
-                <span class="price">Side</span>
-              </article>
-              <article class="menu-item" data-name="green beans">
-                <div>
-                  <h4>Green Beans</h4>
-                  <p>Classic vegetable side.</p>
-                </div>
-                <span class="price">Side</span>
-              </article>
-              <article class="menu-item" data-name="carrots">
-                <div>
-                  <h4>Carrots</h4>
-                  <p>Warm, traditional dinner side.</p>
-                </div>
-                <span class="price">Side</span>
-              </article>
-              <article class="menu-item" data-name="corn">
-                <div>
-                  <h4>Corn</h4>
-                  <p>Simple and familiar vegetable side.</p>
-                </div>
-                <span class="price">Side</span>
-              </article>
-              <article class="menu-item" data-name="fried okra">
-                <div>
-                  <h4>Fried Okra</h4>
-                  <p>Southern side with real menu-board appeal.</p>
-                </div>
-                <span class="price">Side</span>
-              </article>
-              <article class="menu-item" data-name="fries">
-                <div>
-                  <h4>Fries</h4>
-                  <p>For burgers, sandwiches, and quick comfort.</p>
-                </div>
-                <span class="price">Side</span>
-              </article>
-              <article class="menu-item" data-name="rolls">
-                <div>
-                  <h4>Warm Rolls</h4>
-                  <p>Classic Neal’s table companion.</p>
-                </div>
-                <span class="price">Table Favorite</span>
-              </article>
-            </div>
-          </section>
+        <section class="menu-section-card" id="desserts" data-category="desserts">
+          <div class="menu-section-head">
+            <strong>Save Room</strong>
+            <h3>Desserts</h3>
+            <p>Sweet finishes, bakery favorites, and the kind of ending people talk about after the meal.</p>
+          </div>
+          <div class="menu-items">
+            <article class="menu-item" data-name="homemade pie">
+              <div><h4>Homemade Pie</h4><p>The dessert with the strongest emotional pull on the whole menu.</p></div>
+              <span class="price">Signature</span>
+            </article>
+            <article class="menu-item" data-name="cinnamon roll dessert">
+              <div><h4>Cinnamon Roll</h4><p>Sweet enough for dessert, welcome enough for breakfast.</p></div>
+              <span class="price">$2.69</span>
+            </article>
+            <article class="menu-item" data-name="coffee tea dessert">
+              <div><h4>Coffee & Tea</h4><p>Easy finish for pie and conversation.</p></div>
+              <span class="price">All Day</span>
+            </article>
+          </div>
+        </section>
 
-          <section class="menu-section-card" id="desserts" data-category="desserts">
-            <div class="menu-section-head">
-              <strong>Save Room</strong>
-              <h3>Desserts</h3>
-              <p>Sweet finishes, bakery favorites, and the kind of ending people talk about after the meal.</p>
-            </div>
-            <div class="menu-items">
-              <article class="menu-item" data-name="homemade pie">
-                <div>
-                  <h4>Homemade Pie</h4>
-                  <p>The dessert with the strongest emotional pull on the whole menu.</p>
-                </div>
-                <span class="price">Signature</span>
-              </article>
-              <article class="menu-item" data-name="cinnamon roll dessert">
-                <div>
-                  <h4>Cinnamon Roll</h4>
-                  <p>Sweet enough for dessert, welcome enough for breakfast.</p>
-                </div>
-                <span class="price">$2.69</span>
-              </article>
-              <article class="menu-item" data-name="coffee tea dessert">
-                <div>
-                  <h4>Coffee & Tea</h4>
-                  <p>Easy finish for pie and conversation.</p>
-                </div>
-                <span class="price">All Day</span>
-              </article>
-            </div>
-          </section>
+        <section class="menu-section-card" id="kids" data-category="kids">
+          <div class="menu-section-head">
+            <strong>For the Table</strong>
+            <h3>Kids Meals</h3>
+            <p>Family-friendly options that make lunch and dinner easier for everyone.</p>
+          </div>
+          <div class="menu-items">
+            <article class="menu-item" data-name="kids chicken strips">
+              <div><h4>Kids Chicken Strips</h4><p>Simple plate for smaller appetites.</p></div>
+              <span class="price">Kids</span>
+            </article>
+            <article class="menu-item" data-name="kids grilled cheese">
+              <div><h4>Kids Grilled Cheese</h4><p>Easy classic for the family table.</p></div>
+              <span class="price">Kids</span>
+            </article>
+            <article class="menu-item" data-name="kids burger">
+              <div><h4>Kids Burger</h4><p>Smaller burger option for younger diners.</p></div>
+              <span class="price">Kids</span>
+            </article>
+            <article class="menu-item" data-name="kids fish">
+              <div><h4>Kids Fish Plate</h4><p>Scaled-down comfort option from the dinner side of the menu.</p></div>
+              <span class="price">Kids</span>
+            </article>
+          </div>
+        </section>
+      </div>
 
-          <section class="menu-section-card" id="kids" data-category="kids">
-            <div class="menu-section-head">
-              <strong>For the Table</strong>
-              <h3>Kids Meals</h3>
-              <p>Family-friendly options that make lunch and dinner easier for everyone.</p>
-            </div>
-            <div class="menu-items">
-              <article class="menu-item" data-name="kids chicken strips">
-                <div>
-                  <h4>Kids Chicken Strips</h4>
-                  <p>Simple plate for smaller appetites.</p>
-                </div>
-                <span class="price">Kids</span>
-              </article>
-              <article class="menu-item" data-name="kids grilled cheese">
-                <div>
-                  <h4>Kids Grilled Cheese</h4>
-                  <p>Easy classic for the family table.</p>
-                </div>
-                <span class="price">Kids</span>
-              </article>
-              <article class="menu-item" data-name="kids burger">
-                <div>
-                  <h4>Kids Burger</h4>
-                  <p>Smaller burger option for younger diners.</p>
-                </div>
-                <span class="price">Kids</span>
-              </article>
-              <article class="menu-item" data-name="kids fish">
-                <div>
-                  <h4>Kids Fish Plate</h4>
-                  <p>Scaled-down comfort option from the dinner side of the menu.</p>
-                </div>
-                <span class="price">Kids</span>
-              </article>
-            </div>
-          </section>
-        </div>
+      <div class="empty-state" id="emptyState">
+        No menu items matched that search. Try another dish, category, or a broader keyword.
+      </div>
+    </div>
+  </section>
 
-        <div class="empty-state" id="emptyState">
-          No menu items matched that search. Try another dish, category, or a broader keyword.
+  <section class="warm-section diner-texture">
+    <div class="container section-inner">
+      <h2 class="section-title">Save room for dessert.</h2>
+      <p class="section-copy">
+        The menu should end on something customers can picture. Pie, coffee, and sweet finishes deserve visual weight here too.
+      </p>
+
+      <div class="pie-grid">
+        <article class="pie-visual">
+          <div class="pie-copy">
+            <strong>Pie Spotlight</strong>
+            <h3>The meal should finish as strong as it starts.</h3>
+            <p>Homemade pie, warm coffee, cinnamon rolls, and the kind of sweet finish that belongs in a real diner memory.</p>
+          </div>
+        </article>
+
+        <div class="pie-side">
+          <article class="pie-card">
+            <h3>Homemade pie is part of the identity.</h3>
+            <p>It is not just another item on the board. It helps the whole menu feel warmer, more complete, and more recognizably diner.</p>
+          </article>
+          <article class="pie-card">
+            <h3>Coffee belongs beside it.</h3>
+            <p>A pie-and-coffee close gives the menu page a stronger emotional finish and makes the whole experience feel more customer-ready.</p>
+          </article>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="container">
@@ -1306,18 +1480,11 @@
     const searchInput = document.getElementById("searchInput");
     const categoryFilter = document.getElementById("categoryFilter");
     const jumpSelect = document.getElementById("jumpSelect");
-    const categoryChips = Array.from(document.querySelectorAll(".category-chip"));
     const sections = Array.from(document.querySelectorAll(".menu-section-card"));
     const emptyState = document.getElementById("emptyState");
 
     function normalize(value) {
       return value.toLowerCase().trim();
-    }
-
-    function setActiveChip(category) {
-      categoryChips.forEach((chip) => {
-        chip.classList.toggle("is-active", chip.dataset.category === category);
-      });
     }
 
     function filterMenu() {
@@ -1345,18 +1512,10 @@
       });
 
       emptyState.style.display = anyVisible ? "none" : "block";
-      setActiveChip(category);
     }
 
     searchInput.addEventListener("input", filterMenu);
     categoryFilter.addEventListener("change", filterMenu);
-
-    categoryChips.forEach((chip) => {
-      chip.addEventListener("click", () => {
-        categoryFilter.value = chip.dataset.category;
-        filterMenu();
-      });
-    });
 
     jumpSelect.addEventListener("change", () => {
       const value = jumpSelect.value;
