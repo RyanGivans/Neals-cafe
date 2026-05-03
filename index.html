@@ -4,26 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neal's Cafe | Springdale, Arkansas</title>
-  <meta name="description" content="Neal's Cafe in Springdale, Arkansas — breakfast, lunch, dinner, pie, catfish, fried chicken, and home-style comfort food since 1944." />
-  <meta name="theme-color" content="#0e0909" />
+  <meta name="description" content="Neal's Cafe in Springdale, Arkansas — breakfast, blue-plate comfort, pie, catfish, fried chicken, and home-style favorites since 1944." />
+  <meta name="theme-color" content="#0f0908" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0f0908;
-      --bg-2: #17100f;
-      --panel: rgba(31, 22, 20, 0.72);
-      --panel-soft: rgba(255,255,255,.05);
-      --text: #f7efe5;
-      --muted: #d7c5b3;
-      --line: rgba(255, 235, 214, 0.08);
-      --gold: #f0c889;
-      --gold-strong: #e9b560;
-      --rose: #ff9aae;
-      --shadow: 0 24px 90px rgba(0, 0, 0, 0.42);
+      --bg: #100908;
+      --bg-2: #18100f;
+      --bg-3: #221613;
+      --cream: #f7efe4;
+      --cream-2: #eadbc7;
+      --text: #f8f1e7;
+      --muted: #d8c8b9;
+      --gold: #efc786;
+      --gold-2: #d9a858;
+      --red: #b95b4a;
+      --line: rgba(255, 239, 222, 0.09);
+      --shadow: 0 24px 90px rgba(0,0,0,.38);
       --container: 1240px;
-      --nav-h: 88px;
       --ease: 260ms cubic-bezier(.2,.8,.2,1);
     }
 
@@ -34,9 +34,9 @@
       font-family: "Inter", system-ui, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 12% 0%, rgba(255,111,145,.10), transparent 22%),
-        radial-gradient(circle at 82% 8%, rgba(240,200,137,.12), transparent 24%),
-        linear-gradient(180deg, #120d0d 0%, #0b0707 100%);
+        radial-gradient(circle at 14% 0%, rgba(255, 148, 128, .12), transparent 20%),
+        radial-gradient(circle at 85% 8%, rgba(239, 199, 134, .12), transparent 22%),
+        linear-gradient(180deg, #120c0c 0%, #0a0707 100%);
       overflow-x: hidden;
     }
 
@@ -51,8 +51,31 @@
 
     .section {
       position: relative;
-      padding: 108px 0;
+      padding: 104px 0;
     }
+
+    .warm-section {
+      background:
+        linear-gradient(180deg, rgba(247, 239, 228, .04), rgba(247, 239, 228, .02)),
+        radial-gradient(circle at 18% 10%, rgba(239, 199, 134, .08), transparent 26%),
+        radial-gradient(circle at 85% 0%, rgba(185, 91, 74, .08), transparent 24%);
+    }
+
+    .diner-texture::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .05;
+      background:
+        linear-gradient(45deg, transparent 48%, rgba(255,255,255,.7) 48%, rgba(255,255,255,.7) 52%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(255,255,255,.7) 48%, rgba(255,255,255,.7) 52%, transparent 52%);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,.6) 12%, rgba(0,0,0,.6) 88%, transparent);
+      z-index: 0;
+    }
+
+    .section > .container { position: relative; z-index: 1; }
 
     .eyebrow {
       display: inline-flex;
@@ -76,14 +99,14 @@
       width: 8px;
       height: 8px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--rose), var(--gold));
-      box-shadow: 0 0 18px rgba(255, 174, 144, 0.65);
+      background: linear-gradient(135deg, #ff9cae, var(--gold));
+      box-shadow: 0 0 16px rgba(255, 188, 146, .55);
     }
 
     .section-title {
       margin: 16px 0 14px;
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(2.8rem, 5vw, 5rem);
+      font-size: clamp(2.9rem, 5vw, 5rem);
       line-height: .92;
       letter-spacing: -.04em;
     }
@@ -97,7 +120,7 @@
     }
 
     .glass {
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       backdrop-filter: blur(18px);
@@ -112,38 +135,32 @@
       padding: 0 22px;
       border-radius: 999px;
       border: 1px solid transparent;
-      cursor: pointer;
       font-weight: 800;
-      transition: transform var(--ease), box-shadow var(--ease), background var(--ease), border-color var(--ease);
+      transition: transform var(--ease), background var(--ease), border-color var(--ease);
       white-space: nowrap;
     }
 
     .btn:hover { transform: translateY(-2px); }
 
     .btn-primary {
-      color: #22140d;
-      background: linear-gradient(135deg, #fde2ba 0%, #f0bf72 55%, #ffeccf 100%);
-      box-shadow: 0 14px 34px rgba(240,191,114,.24), 0 0 34px rgba(240,191,114,.15);
+      color: #2a180f;
+      background: linear-gradient(135deg, #fde3bc 0%, #f0bf72 100%);
+      box-shadow: 0 14px 30px rgba(240,191,114,.2);
     }
 
     .btn-secondary {
+      color: var(--text);
       background: rgba(255,255,255,.05);
       border-color: rgba(255,255,255,.08);
-      color: var(--text);
-      backdrop-filter: blur(10px);
     }
 
     .btn-ghost {
       color: var(--gold);
-      background: rgba(240,200,137,.05);
-      border-color: rgba(240,200,137,.18);
+      background: rgba(239,199,134,.05);
+      border-color: rgba(239,199,134,.18);
     }
 
-    .btn svg {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-    }
+    .btn svg { width: 18px; height: 18px; flex: 0 0 auto; }
 
     .site-header {
       position: fixed;
@@ -155,10 +172,10 @@
 
     .site-header.is-scrolled {
       padding: 10px 0;
-      background: rgba(10, 7, 7, .70);
+      background: rgba(11, 8, 8, .72);
       backdrop-filter: blur(14px);
-      box-shadow: 0 10px 28px rgba(0,0,0,.22);
       border-bottom: 1px solid rgba(255,255,255,.05);
+      box-shadow: 0 10px 28px rgba(0,0,0,.22);
     }
 
     .nav-shell {
@@ -166,13 +183,13 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      min-height: calc(var(--nav-h) - 24px);
+      min-height: 64px;
       padding: 10px 16px;
       border-radius: 999px;
       background:
-        linear-gradient(180deg, rgba(27, 18, 18, 0.72), rgba(17, 11, 11, 0.62));
+        linear-gradient(180deg, rgba(27, 18, 18, 0.76), rgba(17, 11, 11, 0.66));
       border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 16px 40px rgba(0,0,0,.22);
+      box-shadow: 0 16px 40px rgba(0,0,0,.24);
       backdrop-filter: blur(14px);
     }
 
@@ -184,44 +201,41 @@
       flex: 0 1 auto;
     }
 
-    .brand-logo-wrap {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 62px;
-      padding: 8px 14px;
-      border-radius: 18px;
-      background:
-        linear-gradient(180deg, rgba(255, 248, 239, 0.08), rgba(255, 248, 239, 0.04));
-      border: 1px solid rgba(255,255,255,.07);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.06),
-        0 10px 30px rgba(0,0,0,.22);
-      backdrop-filter: blur(10px);
-    }
-
-    .brand-logo {
-      display: block;
-      height: 44px;
-      width: auto;
-      max-width: 240px;
+    .brand-icon-logo {
+      width: 56px;
+      height: 56px;
       object-fit: contain;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
+      border-radius: 14px;
+      padding: 6px;
+      background:
+        linear-gradient(180deg, rgba(255,248,239,.08), rgba(255,248,239,.04));
+      border: 1px solid rgba(255,255,255,.07);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 10px 30px rgba(0,0,0,.22);
     }
 
-    .brand-mini {
-      display: none;
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      place-items: center;
-      background: linear-gradient(135deg, #f1b5b5 0%, #f4c47c 100%);
-      color: #24130f;
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .brand-text strong {
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      box-shadow: 0 10px 28px rgba(240,174,147,.2);
-      flex: 0 0 auto;
+      font-size: 1.9rem;
+      line-height: .9;
+      letter-spacing: -.03em;
+      color: #fff2e3;
+      white-space: nowrap;
+    }
+
+    .brand-text span {
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(239,199,134,.92);
+      white-space: nowrap;
     }
 
     .nav-links {
@@ -267,15 +281,12 @@
       border: 1px solid rgba(255,255,255,.1);
       background: rgba(255,255,255,.05);
       color: var(--text);
-      cursor: pointer;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
 
-    .menu-toggle svg {
-      width: 22px;
-      height: 22px;
-    }
+    .menu-toggle svg { width: 22px; height: 22px; }
 
     .hero {
       position: relative;
@@ -283,7 +294,7 @@
       display: flex;
       align-items: center;
       overflow: clip;
-      padding: 134px 0 72px;
+      padding: 138px 0 74px;
       isolation: isolate;
     }
 
@@ -292,9 +303,9 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(10,7,7,.88) 0%, rgba(10,7,7,.54) 46%, rgba(10,7,7,.28) 100%),
-        linear-gradient(180deg, rgba(10,7,7,.05) 0%, rgba(10,7,7,.42) 100%),
-        url("neals-hero.jpg") center right / cover no-repeat;
+        linear-gradient(90deg, rgba(10,7,7,.84) 0%, rgba(10,7,7,.52) 46%, rgba(10,7,7,.24) 100%),
+        linear-gradient(180deg, rgba(10,7,7,.04) 0%, rgba(10,7,7,.42) 100%),
+        url("neals-hero.jpg") 72% 58% / cover no-repeat;
       transform: scale(1.03);
       filter: saturate(1.04) contrast(1.03);
       z-index: -4;
@@ -307,7 +318,7 @@
       background:
         radial-gradient(circle at 80% 18%, rgba(255,148,98,.12), transparent 22%),
         radial-gradient(circle at 76% 48%, rgba(255,184,84,.12), transparent 18%),
-        linear-gradient(to top, rgba(8,5,5,.46), transparent 30%);
+        linear-gradient(to top, rgba(8,5,5,.48), transparent 30%);
       z-index: -3;
     }
 
@@ -315,30 +326,13 @@
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(circle at 10% 20%, rgba(255,255,255,.22) 0 1px, transparent 1px),
-        radial-gradient(circle at 70% 30%, rgba(255,255,255,.17) 0 1px, transparent 1px),
-        radial-gradient(circle at 40% 70%, rgba(255,255,255,.12) 0 1px, transparent 1px);
-      background-size: 180px 180px, 230px 230px, 210px 210px;
-      opacity: .06;
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.18) 0 1px, transparent 1px),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,.14) 0 1px, transparent 1px);
+      background-size: 180px 180px, 230px 230px;
+      opacity: .05;
       mix-blend-mode: soft-light;
       pointer-events: none;
       z-index: -2;
-    }
-
-    .hero-floor {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 30%;
-      background:
-        linear-gradient(to top, rgba(255,255,255,.04), transparent 70%),
-        repeating-linear-gradient(to right, rgba(255,255,255,.05) 0, rgba(255,255,255,.05) 1px, transparent 1px, transparent 70px),
-        repeating-linear-gradient(to top, rgba(255,255,255,.04) 0, rgba(255,255,255,.04) 1px, transparent 1px, transparent 52px);
-      mask-image: linear-gradient(to top, rgba(0,0,0,.95), transparent);
-      opacity: .16;
-      pointer-events: none;
-      z-index: -1;
     }
 
     .hero-sign-glow,
@@ -351,10 +345,10 @@
     }
 
     .hero-sign-glow {
-      top: 5%;
+      top: 9%;
       right: 2%;
       width: 18%;
-      height: 72%;
+      height: 68%;
       background:
         linear-gradient(180deg,
           rgba(255,72,36,0) 0%,
@@ -370,7 +364,7 @@
 
     .hero-sign-glow-2 {
       right: 5%;
-      bottom: 18%;
+      bottom: 16%;
       width: 24%;
       height: 18%;
       background: radial-gradient(circle at 40% 50%, rgba(255,180,74,.26), transparent 58%);
@@ -381,7 +375,7 @@
 
     .hero-sign-glow-3 {
       right: 15.5%;
-      top: 33%;
+      top: 38%;
       width: 10%;
       height: 16%;
       background: radial-gradient(circle, rgba(255,92,78,.22), transparent 60%);
@@ -398,7 +392,7 @@
 
     @keyframes signFlickerB {
       0%,30%,33%,70%,100% { opacity: .52; }
-      31% { opacity: .30; }
+      31% { opacity: .3; }
       32% { opacity: .64; }
       71% { opacity: .38; }
     }
@@ -416,19 +410,20 @@
       z-index: 2;
     }
 
-    .hero-copy {
-      max-width: 770px;
-    }
+    .hero-copy { max-width: 790px; }
 
     .hero-title {
-      margin: 18px 0 18px;
+      margin: 18px 0 22px;
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(4rem, 9vw, 8.8rem);
-      line-height: .86;
-      letter-spacing: -.055em;
+      font-size: clamp(3.9rem, 8vw, 7.8rem);
+      line-height: .94;
+      letter-spacing: -.045em;
+      max-width: 8.6ch;
+      text-wrap: balance;
     }
 
     .hero-title .line { display: block; }
+    .hero-title .line + .line { margin-top: .04em; }
 
     .hero-title .accent {
       background: linear-gradient(180deg, #fff3de 0%, #f0c27e 100%);
@@ -503,10 +498,75 @@
       background: linear-gradient(to bottom, rgba(255,255,255,.55), transparent);
     }
 
-    .proof-strip {
-      margin-top: -42px;
+    .specials-strip {
+      margin-top: -34px;
       position: relative;
-      z-index: 6;
+      z-index: 5;
+    }
+
+    .specials-strip-card {
+      padding: 22px 24px;
+      border-radius: 28px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .specials-strip-title {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 180px;
+    }
+
+    .specials-strip-title strong {
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .specials-strip-title h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.4rem;
+      line-height: .92;
+      letter-spacing: -.03em;
+    }
+
+    .specials-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .special-pill {
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+    }
+
+    .special-pill strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff1df;
+      font-size: .92rem;
+    }
+
+    .special-pill span {
+      display: block;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+    .proof-strip {
+      padding-top: 34px;
+      position: relative;
+      z-index: 3;
     }
 
     .proof-panel {
@@ -549,18 +609,27 @@
       line-height: 1.6;
     }
 
-    .legacy { padding-top: 130px; }
+    .legacy-wrap,
+    .triple-grid,
+    .menu-cta,
+    .hall-grid,
+    .pie-spotlight-grid,
+    .gallery-grid,
+    .visit-grid {
+      display: grid;
+      gap: 24px;
+    }
 
     .legacy-wrap {
-      display: grid;
       grid-template-columns: .95fr 1.05fr;
-      gap: 24px;
       align-items: stretch;
     }
 
     .legacy-panel,
-    .legacy-visual {
-      min-height: 680px;
+    .legacy-visual,
+    .pie-spotlight-visual,
+    .visit-visual {
+      min-height: 660px;
       border-radius: 34px;
       overflow: hidden;
       position: relative;
@@ -595,7 +664,7 @@
       display: grid;
       place-items: center;
       border-radius: 16px;
-      background: linear-gradient(135deg, rgba(255,140,164,.14), rgba(240,200,137,.16));
+      background: linear-gradient(135deg, rgba(185, 91, 74, .18), rgba(239, 199, 134, .16));
       color: var(--gold);
       font-weight: 900;
       font-size: 1rem;
@@ -616,7 +685,7 @@
 
     .legacy-visual {
       background:
-        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.62)),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.62)),
         url("https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=80") center / cover no-repeat;
       border: 1px solid rgba(255,255,255,.08);
       box-shadow: var(--shadow);
@@ -627,18 +696,22 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,173,108,.14), transparent 24%),
+        radial-gradient(circle at 20% 20%, rgba(239, 199, 134, .14), transparent 24%),
         linear-gradient(180deg, rgba(14,9,9,.08), rgba(14,9,9,.74));
     }
 
-    .legacy-quote {
+    .legacy-quote,
+    .pie-spotlight-copy,
+    .menu-hero-copy,
+    .gallery-main-copy,
+    .gallery-small-copy,
+    .visit-floating {
       position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 24px;
+      inset: auto 22px 22px 22px;
+      z-index: 2;
       padding: 24px;
       border-radius: 24px;
-      background: rgba(15,10,10,.72);
+      background: rgba(16,10,10,.72);
       border: 1px solid rgba(255,255,255,.08);
       backdrop-filter: blur(16px);
     }
@@ -651,8 +724,66 @@
       letter-spacing: -.03em;
     }
 
-    .feature-head,
-    .visit .feature-head {
+    .triple-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .entry-card {
+      padding: 28px;
+      border-radius: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .entry-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -50px auto;
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(239, 199, 134, .12), transparent 68%);
+      pointer-events: none;
+    }
+
+    .entry-card strong {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .72rem;
+      font-weight: 800;
+    }
+
+    .entry-card h3 {
+      margin: 14px 0 10px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.5rem;
+      line-height: .92;
+      letter-spacing: -.03em;
+    }
+
+    .entry-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .entry-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #f2e6d8;
+      display: grid;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .feature-head {
       display: flex;
       align-items: end;
       justify-content: space-between;
@@ -661,9 +792,7 @@
     }
 
     .menu-cta {
-      display: grid;
       grid-template-columns: 1.08fr .92fr;
-      gap: 24px;
       align-items: stretch;
     }
 
@@ -686,18 +815,8 @@
       background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.74));
     }
 
-    .menu-hero-copy {
-      position: absolute;
-      inset: auto 22px 22px 22px;
-      z-index: 2;
-      padding: 24px;
-      border-radius: 24px;
-      background: rgba(15,10,10,.72);
-      border: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(16px);
-    }
-
-    .menu-hero-copy strong {
+    .menu-hero-copy strong,
+    .pie-spotlight-copy strong {
       display: inline-flex;
       align-items: center;
       min-height: 34px;
@@ -708,9 +827,11 @@
       text-transform: uppercase;
       letter-spacing: .14em;
       font-size: .76rem;
+      font-weight: 800;
     }
 
-    .menu-hero-copy h3 {
+    .menu-hero-copy h3,
+    .pie-spotlight-copy h3 {
       margin: 14px 0 10px;
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: clamp(2.4rem, 4vw, 4rem);
@@ -718,7 +839,8 @@
       letter-spacing: -.04em;
     }
 
-    .menu-hero-copy p {
+    .menu-hero-copy p,
+    .pie-spotlight-copy p {
       margin: 0;
       color: rgba(248,241,231,.84);
       line-height: 1.72;
@@ -750,21 +872,6 @@
       font-size: 1.02rem;
     }
 
-    .hall {
-      position: relative;
-      overflow: clip;
-    }
-
-    .hall::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 50% 18%, rgba(240,200,137,.1), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-      pointer-events: none;
-    }
-
     .hall-shell {
       position: relative;
       padding: 34px;
@@ -772,15 +879,13 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.08);
       background:
-        radial-gradient(circle at 82% 12%, rgba(240,200,137,.16), transparent 24%),
+        radial-gradient(circle at 82% 12%, rgba(239, 199, 134, .14), transparent 24%),
         linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
       box-shadow: var(--shadow);
     }
 
     .hall-grid {
-      display: grid;
       grid-template-columns: .95fr 1.05fr;
-      gap: 30px;
       align-items: center;
     }
 
@@ -837,10 +942,45 @@
       font-size: .95rem;
     }
 
-    .gallery-grid {
+    .pie-spotlight-grid {
+      grid-template-columns: .94fr 1.06fr;
+      align-items: stretch;
+    }
+
+    .pie-spotlight-visual {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.62)),
+        url("https://images.unsplash.com/photo-1562007908-17c67e878c88?auto=format&fit=crop&w=1400&q=80") center / cover no-repeat;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+    }
+
+    .pie-side {
       display: grid;
+      gap: 18px;
+    }
+
+    .pie-small-card {
+      padding: 28px;
+      border-radius: 28px;
+    }
+
+    .pie-small-card h3 {
+      margin: 0 0 10px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.4rem;
+      line-height: .94;
+      letter-spacing: -.03em;
+    }
+
+    .pie-small-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .gallery-grid {
       grid-template-columns: 1.04fr .96fr;
-      gap: 22px;
       align-items: stretch;
     }
 
@@ -868,19 +1008,7 @@
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.66));
-    }
-
-    .gallery-main-copy,
-    .gallery-small-copy {
-      position: absolute;
-      inset: auto 18px 18px 18px;
-      z-index: 2;
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(16,10,10,.68);
-      border: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.66));
     }
 
     .gallery-main-copy h3,
@@ -916,9 +1044,7 @@
     }
 
     .visit-grid {
-      display: grid;
       grid-template-columns: .92fr 1.08fr;
-      gap: 24px;
       align-items: stretch;
     }
 
@@ -950,13 +1076,10 @@
       display: grid;
       place-items: center;
       color: var(--gold);
-      background: linear-gradient(135deg, rgba(255,140,164,.16), rgba(240,200,137,.16));
+      background: linear-gradient(135deg, rgba(185, 91, 74, .18), rgba(239, 199, 134, .16));
     }
 
-    .contact-icon svg {
-      width: 24px;
-      height: 24px;
-    }
+    .contact-icon svg { width: 24px; height: 24px; }
 
     .contact-card h3 {
       margin: 0 0 6px;
@@ -990,15 +1113,11 @@
     }
 
     .visit-visual {
-      position: relative;
-      min-height: 680px;
-      border-radius: 30px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: var(--shadow);
       background:
         linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.64)),
         url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80") center / cover no-repeat;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
     }
 
     .visit-visual::before {
@@ -1006,18 +1125,6 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, rgba(10,7,7,.08), rgba(10,7,7,.7));
-    }
-
-    .visit-floating {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 24px;
-      padding: 22px;
-      border-radius: 24px;
-      background: rgba(15,10,10,.74);
-      border: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(16px);
     }
 
     .visit-floating h3 {
@@ -1042,7 +1149,9 @@
     .site-footer {
       padding: 34px 0 56px;
       border-top: 1px solid rgba(255,255,255,.07);
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      background:
+        linear-gradient(180deg, rgba(247,239,228,.03), rgba(247,239,228,.01)),
+        radial-gradient(circle at 15% 0%, rgba(239,199,134,.08), transparent 24%);
     }
 
     .footer-shell {
@@ -1143,21 +1252,21 @@
       transform: translateY(0);
     }
 
-    @media (max-width: 1120px) {
+    @media (max-width: 1160px) {
+      .specials-strip-card,
       .legacy-wrap,
+      .triple-grid,
       .menu-cta,
       .hall-grid,
+      .pie-spotlight-grid,
       .gallery-grid,
       .visit-grid {
         grid-template-columns: 1fr;
       }
 
+      .specials-row,
       .proof-panel {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hall-brand img {
-        width: min(100%, 360px);
       }
     }
 
@@ -1169,7 +1278,7 @@
         position: fixed;
         left: 16px;
         right: 16px;
-        top: calc(var(--nav-h) + 12px);
+        top: 90px;
         display: grid;
         gap: 10px;
         padding: 16px;
@@ -1198,36 +1307,14 @@
         border: 1px solid rgba(255,255,255,.05);
       }
 
-      .hero {
-        min-height: auto;
-        padding-top: 122px;
-      }
-
-      .hero-title {
-        font-size: clamp(3.3rem, 16vw, 6rem);
-      }
-
-      .hero-sign-glow {
-        right: 0%;
-        width: 22%;
-        height: 70%;
-      }
-
-      .hero-sign-glow-2 {
-        right: 2%;
-        width: 30%;
-        height: 18%;
-      }
-
-      .hero-sign-glow-3 {
-        right: 12%;
-        width: 14%;
-        height: 18%;
-      }
-
       .feature-head {
         flex-direction: column;
         align-items: start;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 126px;
       }
 
       .sticky-cta {
@@ -1248,7 +1335,10 @@
       .hero-actions, .visit-actions { flex-direction: column; }
       .btn { width: 100%; }
       .hero-meta { display: grid; grid-template-columns: 1fr; }
-      .proof-panel { grid-template-columns: 1fr; }
+      .specials-row,
+      .proof-panel {
+        grid-template-columns: 1fr;
+      }
 
       .proof-card {
         border-right: 0;
@@ -1256,10 +1346,18 @@
       }
 
       .proof-card:last-child { border-bottom: 0; }
-      .legacy-panel, .legacy-visual, .visit-visual { min-height: 500px; }
+
+      .legacy-panel,
+      .legacy-visual,
+      .pie-spotlight-visual,
+      .visit-visual {
+        min-height: 500px;
+      }
+
       .scroll-cue { display: none; }
-      .brand-logo-wrap { display: none; }
-      .brand-mini { display: grid; }
+      .brand-text span { display: none; }
+      .brand-text strong { font-size: 1.45rem; }
+      .brand-icon-logo { width: 48px; height: 48px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1274,10 +1372,11 @@
     <div class="container">
       <div class="nav-shell">
         <a class="brand" href="#top" aria-label="Neal's Cafe home">
-          <span class="brand-logo-wrap">
-            <img class="brand-logo" src="./assets/neals-logo-horizontal.png" alt="Neal's Cafe" />
-          </span>
-          <div class="brand-mini">N</div>
+          <img class="brand-icon-logo" src="./assets/neals-logo-icon.png" alt="Neal's Cafe icon" />
+          <div class="brand-text">
+            <strong>Neal's Cafe</strong>
+            <span>Springdale, Arkansas</span>
+          </div>
         </a>
 
         <nav aria-label="Primary">
@@ -1311,7 +1410,6 @@
   <main id="top">
     <section class="hero">
       <div class="hero-noise"></div>
-      <div class="hero-floor"></div>
       <div class="hero-sign-glow"></div>
       <div class="hero-sign-glow-2"></div>
       <div class="hero-sign-glow-3"></div>
@@ -1376,6 +1474,35 @@
       <div class="scroll-cue">Scroll to explore</div>
     </section>
 
+    <section class="specials-strip">
+      <div class="container">
+        <div class="specials-strip-card glass reveal">
+          <div class="specials-strip-title">
+            <strong>Today's Favorites</strong>
+            <h2>Daily specials.</h2>
+          </div>
+          <div class="specials-row">
+            <article class="special-pill">
+              <strong>Tuesday</strong>
+              <span>Roast beef, mashed potatoes, carrots, and roll.</span>
+            </article>
+            <article class="special-pill">
+              <strong>Wednesday</strong>
+              <span>Chicken & dressing with mashed potatoes and vegetable.</span>
+            </article>
+            <article class="special-pill">
+              <strong>Thursday</strong>
+              <span>Meatloaf with mashed potatoes, green beans, and roll.</span>
+            </article>
+            <article class="special-pill">
+              <strong>Friday</strong>
+              <span>Catfish plate with hushpuppies, fries, and slaw.</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="proof-strip">
       <div class="container">
         <div class="proof-panel glass reveal">
@@ -1386,24 +1513,24 @@
           </article>
           <article class="proof-card">
             <strong>Recognition</strong>
-            <h2>Hall of Fame</h2>
-            <p>Recognized as one of Arkansas’ important food institutions.</p>
+            <h2>Landmark</h2>
+            <p>The sign, the room, and the food all carry local memory with them.</p>
           </article>
           <article class="proof-card">
             <strong>Open Rhythm</strong>
             <h2>6 Days</h2>
-            <p>Early starts, long lunch runs, Saturday traffic, and Sunday breakfast before the afternoon close.</p>
+            <p>Early starts, lunch rushes, Saturday traffic, and Sunday breakfast before the afternoon close.</p>
           </article>
           <article class="proof-card">
-            <strong>Atmosphere</strong>
-            <h2>Landmark</h2>
-            <p>Warm, unpretentious, lived-in, and unmistakably part of the community.</p>
+            <strong>Known For</strong>
+            <h2>Comfort Food</h2>
+            <p>Breakfast, pie, catfish, fried chicken, burgers, vegetables, and regulars who come back.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section legacy" id="legacy">
+    <section class="section warm-section diner-texture" id="legacy">
       <div class="container">
         <div class="legacy-wrap">
           <article class="legacy-panel glass reveal">
@@ -1413,12 +1540,12 @@
             <div class="legacy-copy">
               <p>
                 Neal’s Cafe is the kind of place people describe from memory before they even get to the menu.
-                It is the pink building, the sign, the smell of breakfast, the pie case, the easy familiarity,
-                and the certainty that the meal will feel worth the stop.
+                It is the building, the sign, the breakfast smell, the pie case, the easy familiarity, and the certainty
+                that the meal will feel worth the stop.
               </p>
               <p>
-                For decades, that consistency is what turned the cafe into a local ritual. Family lunches,
-                church groups, weekday regulars, first-time visitors, and road-weary mornings all land in the same room.
+                For decades, that consistency is what turned the cafe into a local ritual. Family lunches, church groups,
+                weekday regulars, first-time visitors, and road-weary mornings all land in the same room.
               </p>
             </div>
 
@@ -1458,7 +1585,57 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section warm-section">
+      <div class="container">
+        <div class="feature-head reveal">
+          <div>
+            <span class="eyebrow">The Day at Neal’s</span>
+            <h2 class="section-title">Breakfast, lunch, and dinner all have their own rhythm here.</h2>
+            <p class="section-copy">
+              The best diner sites feel like real meal decisions, not generic sections. This one should make it easy to picture when to come and what to order.
+            </p>
+          </div>
+          <a class="btn btn-ghost" href="./menu/index.html">Browse Full Menu</a>
+        </div>
+
+        <div class="triple-grid">
+          <article class="entry-card glass reveal">
+            <strong>Breakfast</strong>
+            <h3>Start early.</h3>
+            <p>Coffee, eggs, omelets, hotcakes, biscuits, gravy, and the kind of breakfast plates that create regulars.</p>
+            <ul>
+              <li>Hotcakes and cinnamon rolls</li>
+              <li>Classic omelets and egg plates</li>
+              <li>Fast enough for weekdays, comforting enough for weekends</li>
+            </ul>
+          </article>
+
+          <article class="entry-card glass reveal">
+            <strong>Lunch</strong>
+            <h3>Come back hungry.</h3>
+            <p>Burgers, sandwiches, soups, salads, and daily plates that feel exactly right in the middle of the day.</p>
+            <ul>
+              <li>Double bacon cheeseburger</li>
+              <li>Barbecued beef and diner classics</li>
+              <li>Country plates with vegetables and rolls</li>
+            </ul>
+          </article>
+
+          <article class="entry-card glass reveal">
+            <strong>Dinner</strong>
+            <h3>Stay for comfort food.</h3>
+            <p>Fried chicken, catfish, roast beef, meatloaf, sides, and pie — the part of the menu people remember later.</p>
+            <ul>
+              <li>Blue-plate comfort and Southern staples</li>
+              <li>Vegetable sides that belong on the table</li>
+              <li>The kind of meal that makes the stop feel worth it</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section warm-section">
       <div class="container">
         <div class="feature-head reveal">
           <div>
@@ -1499,7 +1676,7 @@
       </div>
     </section>
 
-    <section class="section hall" id="hall">
+    <section class="section warm-section diner-texture" id="hall">
       <div class="container">
         <div class="hall-shell reveal">
           <div class="hall-grid">
@@ -1538,7 +1715,39 @@
       </div>
     </section>
 
-    <section class="section gallery" id="gallery">
+    <section class="section warm-section">
+      <div class="container">
+        <div class="pie-spotlight-grid">
+          <article class="pie-spotlight-visual reveal">
+            <div class="pie-spotlight-copy">
+              <strong>Pie Spotlight</strong>
+              <h3>Save room for the part people talk about on the drive home.</h3>
+              <p>
+                The meal should not end flat. Pie, coffee, and something sweet on the table belong in the Neal’s story just as much as breakfast and blue plates do.
+              </p>
+            </div>
+          </article>
+
+          <div class="pie-side">
+            <article class="pie-small-card glass reveal">
+              <h3>Homemade pie feels like part of the place.</h3>
+              <p>
+                It is not just dessert. It is one of the clearest signals that this is a real diner and cafe with memory, routine, and regulars.
+              </p>
+            </article>
+
+            <article class="pie-small-card glass reveal">
+              <h3>Coffee, cinnamon rolls, and sweet finishes.</h3>
+              <p>
+                Breakfast sweetness in the morning and dessert comfort later gives the site more range and makes the menu feel fuller without clutter.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section warm-section" id="gallery">
       <div class="container">
         <div class="feature-head reveal">
           <div>
@@ -1577,7 +1786,7 @@
             </article>
 
             <article class="gallery-small reveal">
-              <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=80" alt="Pie and dessert" loading="lazy" />
+              <img src="https://images.unsplash.com/photo-1562007908-17c67e878c88?auto=format&fit=crop&w=1200&q=80" alt="Pie and dessert" loading="lazy" />
               <div class="gallery-small-copy">
                 <h3>Save room for pie</h3>
                 <p>The sweet finish that belongs in the memory of the meal, not just at the end of it.</p>
@@ -1588,7 +1797,7 @@
       </div>
     </section>
 
-    <section class="section visit" id="visit">
+    <section class="section warm-section diner-texture" id="visit">
       <div class="container">
         <div class="feature-head reveal">
           <div>
@@ -1688,7 +1897,7 @@
         <div class="footer-brand">
           <img class="footer-logo-full" src="./assets/neals-logo-full.png" alt="Neal's Cafe full logo" />
           <p class="footer-copy">
-            Home-style Arkansas dining with history, comfort, and the kind of familiarity that keeps people coming back.
+            Home-style Arkansas dining with history, comfort, pie, and the kind of familiarity that keeps people coming back.
           </p>
         </div>
 
