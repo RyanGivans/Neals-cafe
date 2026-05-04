@@ -410,20 +410,19 @@
       z-index: 2;
     }
 
-    .hero-copy { max-width: 790px; }
+    .hero-copy { max-width: 960px; }
 
     .hero-title {
       margin: 18px 0 22px;
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(3.9rem, 8vw, 7.8rem);
-      line-height: .94;
+      font-size: clamp(4rem, 6.8vw, 7rem);
+      line-height: .91;
       letter-spacing: -.045em;
-      max-width: 8.6ch;
-      text-wrap: balance;
+      max-width: 11.5ch;
     }
 
     .hero-title .line { display: block; }
-    .hero-title .line + .line { margin-top: .04em; }
+    .hero-title .line + .line { margin-top: .02em; }
 
     .hero-title .accent {
       background: linear-gradient(180deg, #fff3de 0%, #f0c27e 100%);
@@ -1358,6 +1357,13 @@
       .brand-text span { display: none; }
       .brand-text strong { font-size: 1.45rem; }
       .brand-icon-logo { width: 48px; height: 48px; }
+
+      .hero-copy { max-width: 100%; }
+      .hero-title {
+        font-size: clamp(3.4rem, 15vw, 5.2rem);
+        max-width: 8.8ch;
+        line-height: .93;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1419,8 +1425,9 @@
           <span class="eyebrow">Since 1944 · Arkansas Comfort Food</span>
 
           <h1 class="hero-title">
-            <span class="line">The glow of</span>
-            <span class="line accent">Neal’s never left.</span>
+            <span class="line">Breakfast early.</span>
+            <span class="line">Comfort food all day.</span>
+            <span class="line accent">Pie before you go.</span>
           </h1>
 
           <p>
